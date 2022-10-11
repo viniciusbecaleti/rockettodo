@@ -1,0 +1,74 @@
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--gray-600);
+  border-radius: 8px;
+  background: var(--gray-700);
+}
+
+.todo + .todo {
+  margin-top: 0.75rem;
+}
+
+.todo > button {
+  box-shadow: none;
+}
+
+.todo p {
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--gray-100);
+  line-height: 1.4;
+}
+
+.todo.completed p {
+  color: var(--gray-400);
+  text-decoration: line-through;
+}
+
+.check {
+  min-width: 1.125rem;
+  min-height: 1.125rem;
+  border: 2px solid var(--blue-400);
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+
+.check:hover,
+.check:focus {
+  background: var(--blue-500);
+  opacity: 0.2;
+}
+
+.completed .check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: var(--purple-500);
+  background: var(--purple-500);
+  cursor: pointer;
+}
+
+.completed .check:hover,
+.completed .check:focus {
+  border-color: var(--purple-400);
+  background: var(--purple-400);
+  opacity: 1;
+}
+
+.delete {
+  color: var(--gray-400);
+  line-height: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.delete:hover,
+.delete:focus {
+  color: var(--red-500);
+}

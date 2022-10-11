@@ -1,0 +1,81 @@
+.container {
+  box-shadow: inset 0 27px 0 var(--gray-900);
+}
+
+.content {
+  width: 90%;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.todoForm {
+  display: grid;
+  grid-template-columns: 1fr 90px;
+  gap: 0.5rem;
+}
+
+.todoForm input {
+  height: 3.375rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--gray-100);
+  padding: 1rem;
+  border: 1px solid var(--gray-900);
+  border-radius: 8px;
+  background: var(--gray-700);
+}
+
+.todoForm button[type="submit"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--gray-100);
+  line-height: 1.4;
+  border: 0;
+  border-radius: 8px;
+  background: var(--blue-500);
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.todoForm button[type="submit"]:hover {
+  background: var(--blue-400);
+}
+
+.todos {
+  margin: 4rem 0;
+}
+
+.todosInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.total, .completed {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.total strong {
+  font-size: 0.875rem;
+  color: var(--blue-400);
+}
+
+.completed strong {
+  font-size: 0.875rem;
+  color: var(--purple-400);
+}
+
+.total span, .completed span {
+  color: var(--gray-200);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  background: var(--gray-600);
+}
