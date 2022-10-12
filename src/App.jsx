@@ -11,13 +11,17 @@ import styles from "./App.module.css"
 import "./global.css"
 
 export function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("@todos")) || [])
   const [totalTodoCreated, setTotalTodoCreated] = useState(0)
   const [totalTodoCompleted, setTotalTodoCompleted] = useState(0)
   const [newTodoText, setNewTodoText] = useState("")
 
   function handleCreateNewTodo(event) {
     event.preventDefault()
+
+    if (!newTodoText) {
+      return
+    }
     
     const todo = {
       id: uuidv4(),
@@ -47,13 +51,18 @@ export function App() {
     setTodos(todosFiltered)
   }
 
-  useEffect(() => {
-    setTotalTodoCreated(todos.length)
-  }, [todos])
+  function saveOnLocalStorage() {
+    localStorage.setItem("@todos", JSON.stringify(todos))
+  }
 
   useEffect(() => {
+    const todoCreated = todos.length
+    setTotalTodoCreated(todoCreated)
+    
     const todoCompleted = todos.filter(todo => todo.isCompleted === true)
     setTotalTodoCompleted(todoCompleted.length)
+
+    saveOnLocalStorage()
   }, [todos])
 
   return (
