@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Header } from "./components/Header"
 import { Todo } from "./components/Todo"
 
-import { PlusCircle } from "phosphor-react"
+import { PlusCircle, Clipboard } from "phosphor-react"
 
 import styles from "./App.module.css"
 
@@ -101,16 +101,27 @@ export function App() {
               </div>
             </div>
 
-            <div className={styles.todosList}>
-              {todos.map(todo => (
-                <Todo
-                  key={todo.id}
-                  todo={todo}
-                  completeTodo={completeTodo}
-                  deleteTodo={deleteTodo}
-                />
-              ))}
-            </div>
+            {todos.length > 0 ? (
+              <div>
+                {todos.map(todo => (
+                  <Todo
+                    key={todo.id}
+                    todo={todo}
+                    completeTodo={completeTodo}
+                    deleteTodo={deleteTodo}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className={styles.todosEmpty}>
+                <Clipboard size={56} />
+                
+                <div>
+                  <strong>Você ainda não tem tarefas cadastradas</strong>
+                  <p>Crie tarefas e organize seus itens a fazer</p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
