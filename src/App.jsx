@@ -12,9 +12,12 @@ import "./global.css"
 
 export function App() {
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("@todos")) || [])
-  const [totalTodoCreated, setTotalTodoCreated] = useState(0)
-  const [totalTodoCompleted, setTotalTodoCompleted] = useState(0)
+  // const [totalTodoCreated, setTotalTodoCreated] = useState(0)
+  // const [totalTodoCompleted, setTotalTodoCompleted] = useState(0)
   const [newTodoText, setNewTodoText] = useState("")
+
+  const totalTodoCreated = todos.length
+  const totalTodoCompleted = todos.filter(todo => todo.isCompleted === true).length
 
   function handleCreateNewTodo(event) {
     event.preventDefault()
@@ -55,15 +58,17 @@ export function App() {
     localStorage.setItem("@todos", JSON.stringify(todos))
   }
 
-  useEffect(() => {
-    const todoCreated = todos.length
-    setTotalTodoCreated(todoCreated)
-    
-    const todoCompleted = todos.filter(todo => todo.isCompleted === true)
-    setTotalTodoCompleted(todoCompleted.length)
+  saveOnLocalStorage()
 
-    saveOnLocalStorage()
-  }, [todos])
+  // useEffect(() => {
+  //   const todoCreated = todos.length
+  //   setTotalTodoCreated(todoCreated)
+    
+  //   const todoCompleted = todos.filter(todo => todo.isCompleted === true)
+  //   setTotalTodoCompleted(todoCompleted.length)
+
+  //   saveOnLocalStorage()
+  // }, [todos])
 
   return (
     <>
